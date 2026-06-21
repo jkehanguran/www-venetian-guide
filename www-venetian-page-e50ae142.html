@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>再访 · 澳门威尼斯人</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f4f7fa;
+            color: #1e2a3e;
+            line-height: 1.6;
+            padding: 24px 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .container {
+            max-width: 1120px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 8px 30px rgba(0, 40, 60, 0.08);
+            padding: 32px 24px;
+            transition: all 0.25s ease;
+        }
+
+        @media (min-width: 640px) {
+            body {
+                padding: 40px 24px;
+            }
+            .container {
+                padding: 48px 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 64px 56px;
+            }
+        }
+
+        /* hero 开场短句 */
+        .hero-brief {
+            margin-bottom: 32px;
+            border-left: 5px solid #1d7a7a;
+            padding-left: 18px;
+        }
+
+        .hero-brief p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #1d3b4f;
+            letter-spacing: 0.02em;
+            max-width: 720px;
+        }
+
+        .hero-brief .opening {
+            font-size: 1.7rem;
+            font-weight: 500;
+            line-height: 1.3;
+            color: #0f3d3d;
+            margin-bottom: 6px;
+        }
+
+        @media (min-width: 640px) {
+            .hero-brief .opening {
+                font-size: 2.1rem;
+            }
+        }
+
+        /* 承接段落 */
+        .intro-text {
+            margin: 28px 0 36px 0;
+            background: #f9fbfd;
+            padding: 24px 20px;
+            border-radius: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .intro-text .main-paragraph {
+            flex: 2 1 300px;
+        }
+
+        .intro-text .main-paragraph p {
+            margin-bottom: 18px;
+            font-size: 1rem;
+            color: #1f3346;
+        }
+
+        .intro-text .main-paragraph p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-text .aside-note {
+            flex: 1 1 200px;
+            background: #e8f3f0;
+            padding: 18px 16px;
+            border-radius: 20px;
+            border: 1px solid #c3ddd9;
+        }
+
+        .aside-note p {
+            font-size: 0.9rem;
+            color: #135555;
+            font-weight: 450;
+        }
+
+        .aside-note strong {
+            color: #0a4242;
+        }
+
+        /* 网格卡片 —— 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 36px 0 28px 0;
+        }
+
+        @media (min-width: 540px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 860px) {
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #dde9e9;
+            border-radius: 24px;
+            padding: 22px 18px;
+            transition: box-shadow 0.2s, transform 0.15s;
+            box-shadow: 0 2px 6px rgba(0, 30, 30, 0.02);
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 8px 20px rgba(23, 90, 90, 0.08);
+            transform: translateY(-2px);
+            border-color: #9ac7c2;
+        }
+
+        .feature-card .card-label {
+            display: inline-block;
+            background: #d7ece8;
+            color: #135353;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #114242;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #2b4053;
+            margin-bottom: 0;
+        }
+
+        /* 温和结尾 + 收藏/关注提示 */
+        .closing-section {
+            margin-top: 40px;
+            padding-top: 28px;
+            border-top: 1px solid #d4e3e1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .closing-message {
+            background: #eef6f4;
+            padding: 24px 22px;
+            border-radius: 28px;
+            text-align: left;
+        }
+
+        .closing-message p {
+            font-size: 1rem;
+            color: #173d3d;
+            max-width: 700px;
+        }
+
+        .closing-message .bookmark-tip {
+            font-weight: 500;
+            background: #cbe3de;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: #0b4949;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 18px;
+            background: #ffffff;
+            border: 1px solid #d2e2de;
+            border-radius: 24px;
+            padding: 18px 20px;
+        }
+
+        .faq-mini dt {
+            flex: 0 0 100%;
+            font-weight: 600;
+            color: #1b5050;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .faq-mini dd {
+            flex: 1 1 180px;
+            font-size: 0.9rem;
+            color: #28475a;
+            padding-left: 8px;
+            border-left: 2px solid #b5d3cd;
+            margin-bottom: 6px;
+        }
+
+        .faq-mini dd:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #1b6b6b;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(23, 100, 100, 0.3);
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #0d4a4a;
+            border-bottom-color: #0d4a4a;
+        }
+
+        .footer-note {
+            margin-top: 28px;
+            font-size: 0.8rem;
+            color: #60757b;
+            text-align: center;
+        }
+
+        .inline-link {
+            border-bottom: 1px solid #529999;
+        }
+
+        /* 辅助 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero 开场短句 -->
+        <div class="hero-brief">
+            <p class="opening">再次踏入水巷。</p>
+            <p>有些地方，值得你从收藏夹里重新唤醒。<br>澳门威尼斯人不止是一座度假村，更是持续变化的坐标。</p>
+        </div>
+
+        <!-- 承接段落：从再次访问和收藏切入 -->
+        <div class="intro-text">
+            <div class="main-paragraph">
+                <p>你或许已经标记过这座综合度假村——贡多拉游弋、穹顶壁画、运河边的咖啡香气。但每一次重返，都会发现新的叙事：新开幕的艺廊、重新编排的夜间灯光、以及那些藏在石板小径后的独立买手店。距离上一次到访越久，这种新鲜感就越清晰。</p>
+                <p>这也是为什么，我习惯把 <a href="https://www-venetian.com" class="inline-link">澳门威尼斯人</a> 保留在浏览器书签栏的常用分组里。并非因为冲动消费，而是它持续输出值得关注的休旅提案——从限时美食节到展览季，从套房升级到新开放的户外空间。只要保持关注，每一次出发都像翻开一本未读完的杂志。</p>
+            </div>
+            <div class="aside-note">
+                <p><strong>保持更新</strong> · 官方页面会定期释出最新的活动日历与住宿方案。将链接加入收藏，比临时搜索更高效，也更容易捕捉早鸟资讯。</p>
+            </div>
+        </div>
+
+        <!-- 特点列表：网格卡片 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <span class="card-label">空间</span>
+                <h3>尺度与细节并存</h3>
+                <p>超过 3,000 间套房，每一间都保留独立起居区与理石浴室。挑高中庭让光线自然流动，不局促。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-label">体验</span>
+                <h3>运河·贡多拉·回廊</h3>
+                <p>室内运河蜿蜒穿过购物中心，贡多拉船夫的歌声在拱顶下产生微妙混响。夜晚人潮退去后，回廊尤其安静。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-label">风味</span>
+                <h3>多元饮食线索</h3>
+                <p>从米其林星级餐厅到地道茶餐厅，从葡萄牙蛋挞到川味面馆。一份更新的餐饮名单常常是重返的理由。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-label">艺文</span>
+                <h3>常设与快闪展览</h3>
+                <p>酒店公共区域定期更换艺术装置，最近增设了本地插画师联展。展览信息通常只提前两周公布，适合长期关注者。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-label">休憩</span>
+                <h3>泳池与花园</h3>
+                <p>户外泳池区域经过重新植被规划，新增了僻静的日光浴角落。即使在旺季，也容易找到安静位置。</p>
+            </div>
+            <div class="feature-card">
+                <span class="card-label">实用</span>
+                <h3>交通与接驳</h3>
+                <p>酒店提供免费穿梭巴士连接口岸与机场，班次约 15–20 分钟一班。也可以利用轻轨抵达，步行连廊直通大堂。</p>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + 收藏/关注提示 + FAQ 摘要 -->
+        <div class="closing-section">
+            <div class="closing-message">
+                <p>一个实用建议：将度假村的网址存入浏览器收藏夹，并开启通知提醒（部分活动页面支持日历订阅）。这样你不会错过季节性的套房升级或限定演出。持续关注，比临时决定拥有更多从容。</p>
+                <span class="bookmark-tip">⋆ 书签 · 澳门威尼斯人</span>
+            </div>
+
+            <dl class="faq-mini">
+                <dt>常见备忘</dt>
+                <dd><strong>最佳收藏时机？</strong> 每月初官网更新活动月历，适合规划两个月内的行程。</dd>
+                <dd><strong>链接会变吗？</strong> 主域名稳定，建议直接保存 <a href="https://www-venetian.com">澳门威尼斯人</a> 至书签栏。</dd>
+                <dd><strong>重复访问值得吗？</strong> 餐饮、展览、季节性装饰变动明显，半年左右造访一次感受差异最大。</dd>
+            </dl>
+        </div>
+
+        <div class="footer-note">
+            · 页面仅为介绍 · 信息基于公开资料整理 ·
+        </div>
+    </div>
+</body>
+</html>
