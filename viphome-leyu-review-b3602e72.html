@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常查询与对照 · 乐鱼</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Noto Serif SC", "Source Han Serif CN", "Songti SC", Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+      color: #2d2a24;
+      background-color: #f5f2ed;
+    }
+
+    .hero {
+      background: linear-gradient(145deg, #12100e 0%, #1f1b17 70%, #2a231e 100%);
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #b38b5b, #dbbd9a, #b38b5b);
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      color: #e8ddd0;
+      text-align: center;
+    }
+
+    .hero-inner .opening {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: #c7b6a1;
+      margin-bottom: 0.6rem;
+      font-style: normal;
+    }
+
+    .hero-inner h1 {
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 1.4rem;
+      color: #f0e7da;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-inner .sub {
+      font-size: 1rem;
+      color: #baa68c;
+      max-width: 600px;
+      margin: 0 auto;
+      border-top: 1px solid #4a3f33;
+      padding-top: 1.2rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 4rem;
+    }
+
+    .intro-text {
+      font-size: 1.05rem;
+      margin-bottom: 2.8rem;
+      text-indent: 2em;
+      color: #3e3730;
+    }
+
+    .intro-text a {
+      color: #9f7e58;
+      text-decoration: none;
+      border-bottom: 1px solid #d4c3ae;
+      padding-bottom: 1px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .intro-text a:hover {
+      border-bottom-color: #9f7e58;
+      color: #7b5f3e;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0 2.5rem;
+    }
+
+    .card {
+      background: #fefcf9;
+      padding: 1.8rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 6px 18px rgba(0,0,0,0.02);
+      border-left: 3px solid #ceb597;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #2f2922;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #4d453c;
+      line-height: 1.65;
+    }
+
+    .card p a {
+      color: #9f7e58;
+      text-decoration: none;
+      border-bottom: 1px dotted #d4c3ae;
+    }
+
+    .card p a:hover {
+      border-bottom-style: solid;
+    }
+
+    .scene-section {
+      background: #f8f4ee;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      margin: 3rem 0 2.2rem;
+    }
+
+    .scene-section h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #2f2922;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .scene-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .scene-list li {
+      padding-left: 1.8rem;
+      position: relative;
+      font-size: 1rem;
+      color: #3e3730;
+    }
+
+    .scene-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #b89f7f;
+      font-weight: 300;
+    }
+
+    .faq-summary {
+      border-top: 1px solid #ddd5ca;
+      padding-top: 2.5rem;
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+    }
+
+    .faq-item .q {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #4a3f33;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #6b5f50;
+      line-height: 1.5;
+    }
+
+    .closing {
+      margin-top: 3.5rem;
+      text-align: center;
+      font-size: 0.98rem;
+      color: #6b5f50;
+      border-top: 1px solid #ddd5ca;
+      padding-top: 2rem;
+    }
+
+    .closing a {
+      color: #9f7e58;
+      text-decoration: none;
+      border-bottom: 1px solid #d4c3ae;
+    }
+
+    .closing a:hover {
+      border-bottom-color: #9f7e58;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 50vh;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .hero-inner h1 {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        padding: 2.2rem 1.2rem 3rem;
+      }
+
+      .feature-cards {
+        gap: 1.2rem;
+      }
+
+      .scene-section {
+        padding: 1.8rem 1.2rem;
+      }
+
+      .faq-summary {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="opening">有些地方，是慢慢走进去的。</p>
+    <h1>在查询与对照之间，有一个安静的角落叫乐鱼</h1>
+    <p class="sub">不是门户，不是入口，只是日常延伸阅读里的一处参照。</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <p class="intro-text">
+    每天都会打开浏览器，输入几个关键词，翻过几页结果，再慢慢收束到某个熟悉的站点。这种流程重复久了，反而容易忽略一个事实：真正值得反复回去的地方并不多。<a href="https://viphome-leyu.com">乐鱼</a>就是那种在查询与对照之间自然浮现出来的名字——它不争抢视线，不制造焦虑，只是安静地待在书签栏的角落里，等你需要延伸阅读的时候，顺手点开，然后发现它一直在那里。
+  </p>
+
+  <div class="feature-cards">
+    <div class="card">
+      <h3>对照的尺度</h3>
+      <p>比起堆砌信息，更在意信息的排布方式。页面结构克制，留白充足，适合在分屏或小窗中与其它资料并行对照。</p>
+    </div>
+    <div class="card">
+      <h3>查询的落点</h3>
+      <p>搜索之后常会面临一个困境：找到了，但不确定是否可靠。<a href="https://viphome-leyu.com">乐鱼</a>的内容调性偏向整理而非断言，把判断的余量留给你。</p>
+    </div>
+    <div class="card">
+      <h3>延伸的节奏</h3>
+      <p>不会强制推送，也不设弹窗提醒。每篇延伸阅读都像书页间的夹签，你想翻到那一页自然就能翻到。</p>
+    </div>
+  </div>
+
+  <div class="scene-section">
+    <h2>日常中会用到它的几个场景</h2>
+    <ul class="scene-list">
+      <li>晚上整理笔记，需要对比某个概念的两种解释——打开两个标签页，其中一个就是乐鱼。</li>
+      <li>周末想了解某个领域的基础脉络，不想被算法推荐带偏，直接进入乐鱼的分类索引。</li>
+      <li>看到同事分享的话题觉得陌生，不急着问，先自己查一圈，最后在乐鱼里找到一条平实的梳理。</li>
+      <li>写东西卡壳时，翻翻乐鱼里那些安静的文章，不一定要引用，只是换换思路。</li>
+    </ul>
+  </div>
+
+  <div class="faq-summary">
+    <div class="faq-item">
+      <div class="q">乐鱼适合什么人？</div>
+      <div class="a">偏好自主检索、不喜欢被推送节奏打扰的读者。对信息筛选有耐心，也接受一定的不确定性。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">第一次去应该看什么？</div>
+      <div class="a">没有固定起点，随便点开一个与自己当前兴趣相关的分类就好。页面结构清晰，浏览负担很轻。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">和普通资讯站有什么不同？</div>
+      <div class="a">它更像一个经过筛选的知识侧写台——不追逐热点，不制造信息洪流，把节奏还给你。</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p>查资料、做对照、延伸阅读——这些日常动作里藏着许多细小的选择。<a href="https://viphome-leyu.com">乐鱼</a>是这些选择中一个安静且固定的坐标。打开它，不需要理由；关上它，也不需要借口。</p>
+  </div>
+
+</div>
+
+</body>
+</html>
